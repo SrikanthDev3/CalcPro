@@ -1,0 +1,40 @@
+<div class="calculator-container">
+  <div class="calculator-card">
+    <!-- Display -->
+    <div class="display-section">
+      <div class="display" [class.error]="isError()">
+        {{ display() }}
+      </div>
+    </div>
+
+    <!-- Buttons Grid -->
+    <div class="buttons-grid">
+      <ng-container *ngFor="let button of buttons">
+        <button
+          class="calc-button"
+          [ngClass]="button.type"
+          [style.grid-column]="button.colspan ? 'span ' + button.colspan : 'auto'"
+          (click)="button.action()"
+          type="button"
+          aria-label="Button {{ button.label }}"
+        >
+          <span class="button-label">{{ button.label }}</span>
+        </button>
+      </ng-container>
+    </div>
+
+    <!-- Voice Input Placeholder -->
+    <div class="voice-section">
+      <button
+        class="voice-button"
+        [disabled]="voiceButton.disabled"
+        title="Voice input coming soon"
+        type="button"
+        aria-label="Voice input"
+      >
+        {{ voiceButton.label }}
+      </button>
+      <span class="voice-label">Voice (Soon)</span>
+    </div>
+  </div>
+</div>

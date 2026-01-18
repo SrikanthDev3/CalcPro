@@ -1,0 +1,165 @@
+.calc-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.calculator-card {
+    background: var(--bg-card-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    padding: 24px;
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Top Glow Effect */
+.calculator-card::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    background: var(--accent-primary);
+    filter: blur(80px);
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.screen {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 18px;
+    padding: 20px 24px;
+    text-align: right;
+    min-height: 90px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.result-text {
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--text-primary);
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+/* Keypad Grid */
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Buttons */
+.btn {
+    border: none;
+    outline: none;
+    background: var(--btn-bg);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    font-size: 1.35rem;
+    font-weight: 400;
+    border-radius: var(--radius-full);
+    aspect-ratio: 1;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:active {
+    transform: scale(0.92);
+}
+
+.btn:hover:not(.disabled) {
+    background: var(--btn-bg-hover);
+}
+
+/* Button Variants */
+.btn-op {
+    background: var(--btn-op-bg);
+    color: var(--btn-op-text);
+    font-weight: 500;
+}
+
+.btn-op:hover:not(.disabled) {
+    filter: brightness(1.1);
+}
+
+.btn-func {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.btn-func:hover:not(.disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.btn-equal {
+    background: var(--accent-equals);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn-equal:hover:not(.disabled) {
+    background: var(--accent-equals-hover);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+/* Spans */
+.span-2 {
+    grid-column: span 2;
+    aspect-ratio: auto;
+    border-radius: 40px;
+    justify-content: flex-start;
+    padding-left: 32px;
+}
+
+.disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-height: 700px) {
+    .calculator-card {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .result-text {
+        font-size: 2.8rem;
+    }
+
+    .btn {
+        font-size: 1.2rem;
+    }
+}

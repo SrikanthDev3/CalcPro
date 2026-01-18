@@ -1,0 +1,19 @@
+<div class="calc-wrapper">
+    <h1 class="sr-only">Professional Calculator</h1>
+    <div class="calculator-card">
+        <!-- Display Screen -->
+        <div class="screen">
+            <div class="result-text">{{ displayValue() }}</div>
+        </div>
+
+        <!-- Keypad -->
+        <div class="keypad">
+            @for (btn of buttons; track btn.label) {
+            <button type="button" [class]="'btn ' + btn.class" [class.disabled]="btn.disabled"
+                (click)="onButtonClick(btn)">
+                {{ btn.label }}
+            </button>
+            }
+        </div>
+    </div>
+</div>
